@@ -2,7 +2,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 
 export const metadata = {
-  title: "JJHP",
+  title: "INTAKE",
   description: "Gestión de clientes, dietas y rutinas",
 };
 

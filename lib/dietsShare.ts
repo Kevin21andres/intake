@@ -168,7 +168,7 @@ ${url}
 Cualquier duda, dime.
 
 Un saludo,
-Juanjo
+NombreCliente
   `.trim());
 
   window.location.href = `mailto:${clientEmail}?subject=${subject}&body=${body}`;

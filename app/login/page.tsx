@@ -56,7 +56,7 @@ export default function LoginPage() {
         {/* LOGO / TITLE */}
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-semibold text-white tracking-tight">
-            Juanjo<span className="text-[var(--color-accent)]">Fitness</span>
+            Nombre<span className="text-[var(--color-accent)]">Cliente</span>
           </h1>
           <p className="text-sm text-white/60">
             Acceso privado · Panel nutricional
