@@ -1,8 +1,8 @@
-# 🥗 JuanjoFitness Macros
+# 🥗 INTAKE
 
 ## 🚦 Estado del proyecto
 
-**JuanjoFitness Macros v1.0**  
+**INTAKE v1.0**  
 La aplicación ha alcanzado su **primera versión estable**, con todas las funcionalidades base implementadas y operativas en entorno de producción.
 
 Incluye:
@@ -15,6 +15,7 @@ Incluye:
 
 A partir de esta versión, el desarrollo se centra en **mejoras incrementales y nuevas funcionalidades**.
 
+---
 
 Aplicación web para **gestión nutricional profesional**, orientada a entrenadores y nutricionistas.  
 Permite crear clientes, diseñar dietas por comidas, calcular macronutrientes, generar PDFs profesionales y compartir dietas mediante enlaces públicos seguros.
@@ -39,12 +40,17 @@ Permite crear clientes, diseñar dietas por comidas, calcular macronutrientes, g
   - Grasas
 - Dieta activa + histórico de dietas anteriores
 
+### 💊 Suplementación
+- Asignación de suplementos por comida
+- Cantidad y unidad configurable (g, mg, cápsulas, etc.)
+- Visible en app, PDF y enlace compartido
+
 ### 📝 Notas y recomendaciones
 - Campo de notas por dieta
 - Ideal para:
-  - Suplementación
   - Indicaciones generales
   - Ajustes personalizados
+  - Recomendaciones específicas
 - Visible en app, PDF y enlace compartido
 
 ### 📊 Visualización de macros
@@ -59,7 +65,7 @@ Permite crear clientes, diseñar dietas por comidas, calcular macronutrientes, g
 
 ### 🔐 Autenticación
 - Login privado con Supabase Auth
-- Acceso restringido al panel
+- Acceso restringido al panel profesional
 - Enlaces compartidos aislados por token
 
 ---
@@ -84,44 +90,17 @@ Permite crear clientes, diseñar dietas por comidas, calcular macronutrientes, g
 - **TypeScript**
 - **Tailwind CSS**
 
-### Backend / BBDD
+### Backend / Base de datos
 - **Supabase**
   - PostgreSQL
   - Auth
   - Row Level Security (RLS)
 
 ### Generación de PDFs
-- `jspdf`
-- `jspdf-autotable`
-- `@react-pdf/renderer` (para PDFs avanzados)
+- `@react-pdf/renderer`
 
 ---
 
-## 🗂️ Estructura del proyecto
-
-/app
-├─ login
-├─ home
-├─ clients
-│ ├─ new
-│ ├─ [id]
-│ │ ├─ edit
-│ │ └─ diet
-├─ calculator
-├─ components
-│ ├─ DietPlanner
-│ ├─ FoodCalculator
-│ ├─ MacroDonut
-│ ├─ SaveDietModal
-/lib
-├─ clientsApi.ts
-├─ dietsApi.ts
-├─ foodsApi.ts
-├─ dashboardApi.ts
-├─ supabaseBrowser.ts
-
-
----
 
 ## 🗄️ Modelo de datos (resumen)
 
@@ -151,60 +130,17 @@ Permite crear clientes, diseñar dietas por comidas, calcular macronutrientes, g
 - meal_id
 - food_id
 - grams
+- role
+- parent_item_id
 
-### foods
-- id
-- name
-- kcal_100
-- protein_100
-- carbs_100
-- fat_100
-
-### diet_shares
-- id
-- diet_id
-- token
-- created_at
-
----
-
-## 🚀 Instalación y uso local
-
-### 1️⃣ Clonar el repositorio
-```bash
-git clone https://github.com/tu-usuario/juanjo-fitness-macros.git
-cd juanjo-fitness-macros
-
----
-
-## 🗄️ Modelo de datos (resumen)
-
-### clients
-- id (uuid)
-- name
-- email
-- phone
-- notes
-- created_at
-
-### diets
-- id
-- client_id
-- name
-- notes
-- created_at
-- is_active
-
-### diet_meals
-- id
-- diet_id
-- meal_index
-
-### diet_items
+### diet_supplements
 - id
 - meal_id
-- food_id
-- grams
+- name
+- amount
+- unit
+- timing
+- notes
 
 ### foods
 - id
@@ -218,31 +154,7 @@ cd juanjo-fitness-macros
 - id
 - diet_id
 - token
+- is_active
+- expires_at
 - created_at
 
----
-
-## 🚀 Instalación y uso local
-
-### 1️⃣ Clonar el repositorio
-```bash
-git clone https://github.com/tu-usuario/juanjo-fitness-macros.git
-cd juanjo-fitness-macros
-
-2️⃣ Instalar dependencias
-npm install
-
-3️⃣ Variables de entorno
-
-Crear un archivo .env.local:
-
-NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_public_key
-
-4️⃣ Ejecutar en local
-npm run dev
-
-
-La app estará disponible en:
-
-http://localhost:3000# nutrition-platform
